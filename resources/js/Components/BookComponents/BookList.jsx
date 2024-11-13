@@ -18,7 +18,13 @@ const BookList = () => {
                 const response = await axios.get('/books');
                 setBooks(response.data);
             } catch (err) {
-                setError(err.message || 'Something went wrong while fetching books.');
+                if (err.response) {
+                    setError(`Failed to fetch books. Error: ${err.response.status} - ${err.response.statusText}`);
+                } else if (err.request) {
+                    setError('Failed to fetch books. Network error, please try again.');
+                } else {
+                    setError('Something went wrong while fetching books.');
+                }
             } finally {
                 setLoading(false);
             }

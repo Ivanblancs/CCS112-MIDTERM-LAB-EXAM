@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Book extends Model
 {
+    protected $connection = 'mysql';
     use HasFactory;
     protected $primaryKey = 'id';
     protected $fillable = [

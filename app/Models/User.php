@@ -11,7 +11,8 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-
+ 
+    protected $connection = 'mysql_secondary'; 
     /**
      * The attributes that are mass assignable.
      *
